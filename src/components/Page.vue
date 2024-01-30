@@ -44,7 +44,10 @@ async function display(data) {
 }
 
 async function get(page) {
+    // Create peer
     peer.value = new Peer();
+
+    // Set handlers
     peer.value.on('open', () => {
         const connection = peer.value.connect(page.address, {
             reliable: true,
@@ -60,11 +63,15 @@ async function get(page) {
             console.log('error', err);
         })
     })
+
     peer.value.on('error', (err) => {
         if (err.type == 'peer-unavailable') {
             neterror.value = true;
         }
     })
+
+    // Expose peer to the window
+    window.peer = peer.value;
 }
 
 onBeforeMount(() => {

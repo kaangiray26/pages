@@ -47,7 +47,7 @@
         <div class="d-flex flex-column">
             <h2 class="fw-bold">Ready to publish?</h2>
             <p>Click the button below to publish your web page.</p>
-            <div class="d-flex justify-content-end">
+            <div class="d-flex justify-content-start">
                 <button v-if="!serving" type="button" class="btn btn-primary" @click="start_serving">Publish</button>
                 <button v-else type="button" class="btn btn-danger" @click="stop_serving">Stop</button>
             </div>
@@ -88,6 +88,7 @@ async function start_serving() {
     // On connection, send content
     peer.value.on('connection', (connection) => {
         connection.on('open', () => {
+            console.log(connection.metadata);
             connection.send({
                 title: data.value.title,
                 content: data.value.content
