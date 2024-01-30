@@ -10,7 +10,7 @@
         </div>
         <hr>
         <div class="d-flex flex-column">
-            <h1 class="fw-bold">Configuration</h1>
+            <h2 class="fw-bold">Configuration</h2>
             <form>
                 <div class="row mb-3">
                     <label for="inputTitle" class="col-sm-2 col-form-label">Title</label>
@@ -45,7 +45,7 @@
         </div>
         <hr>
         <div class="d-flex flex-column">
-            <h1 class="fw-bold">Ready to publish?</h1>
+            <h2 class="fw-bold">Ready to publish?</h2>
             <p>Click the button below to publish your web page.</p>
             <div class="d-flex justify-content-end">
                 <button v-if="!serving" type="button" class="btn btn-primary" @click="start_serving">Publish</button>
