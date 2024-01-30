@@ -26,7 +26,6 @@ import { Peer } from 'peerjs';
 
 const router = useRouter();
 
-const peer = ref(null);
 const neterror = ref(false);
 
 // Web page data
