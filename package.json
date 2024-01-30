@@ -1,6 +1,6 @@
 {
-  "name": "template",
-  "version": "0.0.0",
+  "name": "pages",
+  "version": "0.0.1",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

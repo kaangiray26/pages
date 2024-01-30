@@ -7,7 +7,7 @@ const path = require('path')
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    base: '/web/',
+    base: '/pages/',
     root: path.resolve(__dirname, 'src'),
     server: {
         port: 8000,

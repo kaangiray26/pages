@@ -1,2 +1,2 @@
-# web
-P2P Web Hosting
+# pages
+P2P Static Website Hosting
