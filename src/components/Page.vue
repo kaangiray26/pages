@@ -1,5 +1,4 @@
 <template>
-    <div ref="content"></div>
     <div v-show="neterror"
         style="position: absolute;top: 0;left: 0;width: 100vw;height: 100vh;display: flex;justify-content: center;align-items: center;background-color: #1c1b22;color:rgb(251, 251, 254);">
         <div style="display: flex;flex-direction: column;padding: 3rem;">
@@ -26,9 +25,8 @@ import { useRouter } from 'vue-router';
 import { Peer } from 'peerjs';
 
 const router = useRouter();
-const peer = ref(null);
 
-const content = ref(null);
+const peer = ref(null);
 const neterror = ref(false);
 
 // Web page data
@@ -39,8 +37,10 @@ const page = ref({
 })
 
 async function display(data) {
-    document.title = data.title;
-    content.value.innerHTML = data.content;
+    if (data.title) document.title = data.title;
+    document.open();
+    document.write(data.content);
+    document.close();
 }
 
 async function get(page) {

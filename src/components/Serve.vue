@@ -23,13 +23,19 @@
                             id="inputAddress" :readonly="serving">
                     </div>
                     <span class="col-sm-10 offset-sm-2">Your web page will be available at
-                        <span class="fw-bold">https://kaangiray26.github.io/web/{{ data.address }}</span></span>
+                        <a class="fw-bold"
+                            :href="'https://kaangiray26.github.io/web/' + data.address">https://kaangiray26.github.io/web/{{
+                                data.address }}</a></span>
                 </div>
                 <div class="row mb-3">
                     <label for="inputContent" class="col-sm-2 col-form-label">Content</label>
                     <div class="col-sm-10">
                         <textarea v-model="data.content" class="form-control" placeholder="<h1>Hey people!</h1>"
                             id="inputContent" rows="5"></textarea>
+                        <div class="mt-3">
+                            <label for="formFile" class="form-label">Or upload a single HTML file</label>
+                            <input class="form-control" type="file" id="formFile" @change="upload_file" accept=".html">
+                        </div>
                     </div>
                 </div>
             </form>
@@ -54,13 +60,24 @@ const serving = ref(false);
 
 // Web page data
 const data = ref({
-    title: '',
+    title: null,
     address: '',
     content: ''
 })
 
+async function upload_file(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = async (event) => {
+        data.value.content = event.target.result;
+    }
+
+    reader.readAsText(file);
+}
+
 async function start_serving() {
-    if (!data.value.title || !data.value.address || !data.value.content) return;
+    if (!data.value.address || !data.value.content) return;
 
     // Create peer
     peer.value = new Peer([data.value.address]);
