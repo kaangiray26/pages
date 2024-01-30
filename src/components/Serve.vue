@@ -1,6 +1,9 @@
 <template>
     <div class="container d-flex flex-column py-4">
-        <h1 class="fw-bold">Web</h1>
+        <div class="d-flex align-items-center">
+            <img src="/favicon-dark.svg" height="64">
+            <h1 class="fw-bold">Pages</h1>
+        </div>
         <p>Create and serve your own web pages directly from your browser.</p>
         <div class="bg-dark text-light rounded shadow p-3">
             <span>{{ serving ? 'Active' : 'Not active' }}</span>

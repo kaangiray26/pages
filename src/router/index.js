@@ -4,7 +4,7 @@ import Page from '/components/Page.vue';
 
 const routes = [
     {
-        path: "/web/",
+        path: "/pages/",
         component: Serve
     },
     {
