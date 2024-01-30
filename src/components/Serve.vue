@@ -52,7 +52,7 @@ import { Peer } from 'peerjs';
 const peer = ref(null);
 const serving = ref(false);
 
-// Web page details
+// Web page data
 const data = ref({
     title: '',
     address: '',

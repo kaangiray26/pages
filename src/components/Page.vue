@@ -1,5 +1,22 @@
 <template>
     <div ref="content"></div>
+    <div v-show="neterror"
+        style="position: absolute;top: 0;left: 0;width: 100vw;height: 100vh;display: flex;justify-content: center;align-items: center;background-color: #1c1b22;color:rgb(251, 251, 254);">
+        <div style="display: flex;flex-direction: column;padding: 3rem;">
+            <h1>Hmm. We're We’re having trouble finding that peer.</h1>
+            <p>We can’t connect to the server at {{ page.address }}.</p>
+            <p>If you entered the right address, you can:</p>
+            <ul>
+                <li>Try again later</li>
+                <li>Check your network connection</li>
+            </ul>
+            <div style="display: flex;justify-content: end;">
+                <a :href="router.currentRoute.value.fullPath"
+                    style="background-color: #ffc107;color:rgb(43, 42, 51);padding: 0 1.5em;font-weight: 600;text-decoration: none;border-radius: 4px;min-height: 32px;line-height: 19.5px;display: flex;align-items: center;">Try
+                    again</a>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script setup>
@@ -11,20 +28,28 @@ const router = useRouter();
 const peer = ref(null);
 
 const content = ref(null);
+const neterror = ref(false);
+
+// Web page data
+const page = ref({
+    address: '',
+    route: '',
+    query: [],
+})
 
 async function display(data) {
     document.title = data.title;
     content.value.innerHTML = data.content;
 }
 
-async function get(addr, route, query) {
+async function get(page) {
     peer.value = new Peer();
     peer.value.on('open', () => {
-        const connection = peer.value.connect(addr, {
+        const connection = peer.value.connect(page.address, {
             reliable: true,
             metadata: {
-                route,
-                query
+                route: page.route,
+                query: page.query
             }
         })
         connection.on('data', (data) => {
@@ -35,18 +60,22 @@ async function get(addr, route, query) {
         })
     })
     peer.value.on('error', (err) => {
-        console.log('error', err);
+        if (err.type == 'peer-unavailable') {
+            neterror.value = true;
+        }
     })
 }
 
 onBeforeMount(() => {
-    const query = router.currentRoute.value.query;
     const path = router.currentRoute.value.params.pathMatch;
 
-    const address = path[0];
-    const route = '/' + path.slice(1).join('/');
+    page.value = {
+        address: path[0],
+        route: '/' + path.slice(1).join('/'),
+        query: router.currentRoute.value.query,
+    }
 
     // Request data from the address
-    get(address, route, query);
+    get(page.value);
 })
 </script>

@@ -18,11 +18,3 @@ body {
     flex-direction: column;
     overflow-y: scroll;
 }
-
-.dashboard {
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-    border-radius: 0.375rem;
-    background-color: #e5e9f0;
-}
