@@ -44,11 +44,11 @@ async function display(data) {
 
 async function get(page) {
     // Create peer
-    windows.peer = new Peer();
+    window.peer = new Peer();
 
     // Set handlers
-    windows.peer.on('open', () => {
-        const connection = windows.peer.connect(page.address, {
+    window.peer.on('open', () => {
+        const connection = window.peer.connect(page.address, {
             reliable: true,
             metadata: {
                 route: page.route,
@@ -63,7 +63,7 @@ async function get(page) {
         })
     })
 
-    windows.peer.on('error', (err) => {
+    window.peer.on('error', (err) => {
         if (err.type == 'peer-unavailable') {
             neterror.value = true;
         }
