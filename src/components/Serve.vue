@@ -24,7 +24,7 @@
                     </div>
                     <span class="col-sm-10 offset-sm-2">Your web page will be available at
                         <a class="fw-bold"
-                            :href="'https://kaangiray26.github.io/web/' + data.address">https://kaangiray26.github.io/web/{{
+                            :href="'https://kaangiray26.github.io/pages/' + data.address">https://kaangiray26.github.io/pages/{{
                                 data.address }}</a></span>
                 </div>
                 <div class="row mb-3">
