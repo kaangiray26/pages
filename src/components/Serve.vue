@@ -23,7 +23,7 @@
                             id="inputAddress" :readonly="serving">
                     </div>
                     <span class="col-sm-10 offset-sm-2">Your web page will be available at
-                        <span class="fw-bold">https://kaangiray26.github.io/{{ data.address }}</span></span>
+                        <span class="fw-bold">https://kaangiray26.github.io/web/{{ data.address }}</span></span>
                 </div>
                 <div class="row mb-3">
                     <label for="inputContent" class="col-sm-2 col-form-label">Content</label>
