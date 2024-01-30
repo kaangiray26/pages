@@ -9,7 +9,7 @@ const routes = [
     },
     {
         // All other paths to Page
-        path: "/web/:pathMatch(.*)*",
+        path: "/pages/:pathMatch(.*)*",
         component: Page
     }
 ];
