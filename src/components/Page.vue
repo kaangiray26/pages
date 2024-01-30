@@ -3,7 +3,7 @@
     <div v-show="neterror"
         style="position: absolute;top: 0;left: 0;width: 100vw;height: 100vh;display: flex;justify-content: center;align-items: center;background-color: #1c1b22;color:rgb(251, 251, 254);">
         <div style="display: flex;flex-direction: column;padding: 3rem;">
-            <img src="/web/star.svg" width="96" style="padding-bottom: 1rem;">
+            <img src="/star.svg" width="96" style="padding-bottom: 1rem;">
             <h1>Hmm. We're We’re having trouble finding that peer.</h1>
             <p>We can’t connect to the server at {{ page.address }}.</p>
             <p>If you entered the right address, you can:</p>
