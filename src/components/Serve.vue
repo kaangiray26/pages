@@ -1,6 +1,6 @@
 <template>
     <div class="container d-flex flex-column py-4">
-        <h1 class="fw-bold mb-3">Pages or: How to serve web pages directly from your browser</h1>
+        <h1 class="fw-bold mb-3">How to serve web pages directly from your browser</h1>
         <div class="d-flex align-items-center">
             <span class="bi bi-calendar2-event me-2"></span>
             <span class="text-muted">Feb 2024</span>
