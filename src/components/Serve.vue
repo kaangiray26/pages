@@ -161,6 +161,10 @@ async function upload_file(event) {
 }
 
 async function start_serving() {
+    // Clean previous peers
+    if (peer.value) peer.value.destroy();
+
+    // Check if data is valid
     if (!data.value.address || !data.value.content) return;
 
     // Create peer
@@ -181,6 +185,9 @@ async function start_serving() {
 }
 
 async function serve_example_1() {
+    // Clean previous peers
+    if (peer.value) peer.value.destroy();
+
     // Create peer
     peer.value = new Peer();
 
