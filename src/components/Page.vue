@@ -36,7 +36,6 @@ const page = ref({
 })
 
 async function display(data) {
-    if (data.title) document.title = data.title;
     document.open();
     document.write(data.content);
     document.close();
