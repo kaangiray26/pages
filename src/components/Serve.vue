@@ -263,7 +263,7 @@ peer.on('connection', (connection) =&gt; {
                 check out the <a href="https://github.com/kaangiray26/pages">source code</a> of this page on my GitHub
                 repository. Stay connected!</p>
             <p>Feel free to reach out to me on GitHub or you can send me an <a
-                    href="emailto:kaangiray26@protonmail.com">email!</a></p>
+                    href="mailto:kaangiray26@protonmail.com">email!</a></p>
             <div class="d-flex justify-content-start">
                 <a class="unlink fw-bold" href="https://github.com/kaangiray26" target="_blank">
                     <span class="bi bi-github me-2"></span>
