@@ -11,6 +11,10 @@
                 <h2 id="quickstart" class="fw-bold">Quickstart</h2>
             </a>
             <pre class="code">server: {{ serving ? 'active' : 'not active' }}</pre>
+            <p>
+                Enter an address and some content to make it instantly available on the web. Then, click the button to start
+                serving.
+            </p>
             <form>
                 <div class="row mb-3">
                     <label for="inputAddress" class="col-sm-2 col-form-label">Address</label>
@@ -292,7 +296,7 @@ peer.on('connection', (connection) =&gt; {
 </style>
 <script setup>
 import { onBeforeMount, ref } from 'vue';
-import { Peer } from 'peerjs';
+import { Peer, PeerError } from 'peerjs';
 
 const peer = ref(null);
 const serving = ref(false);
@@ -341,11 +345,18 @@ async function start_serving() {
     })
 
     peer.value.on('connection', (connection) => {
+        console.log("Incoming connection:", connection);
         connection.on('open', () => {
             connection.send({
                 content: data.value.content
             });
         })
+    })
+    peer.value.on('error', (error) => {
+        console.log(error);
+        if (error.type == 'unavailable-id') {
+            alert('This address is already in use. Please try another one.');
+        }
     })
 }
 

@@ -42,6 +42,7 @@ async function display(data) {
 }
 
 async function get(page) {
+    console.log("Getting page:", page);
     // Create peer
     window.peer = new Peer();
 
@@ -57,6 +58,9 @@ async function get(page) {
         window.connection.on('data', (data) => {
             console.log("Data received:", data);
             display(data);
+        })
+        window.connection.on('error', (err) => {
+            console.log(err);
         })
     })
 
