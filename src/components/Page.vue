@@ -64,6 +64,7 @@ async function get(page) {
     })
 
     window.peer.on('error', (err) => {
+        console.log(err);
         if (err.type == 'peer-unavailable') {
             neterror.value = true;
         }
