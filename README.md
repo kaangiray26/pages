@@ -10,3 +10,6 @@ Please follow the project page for more information:
 ## Want to create your own?
 Check out this template repository and fork it to create your own p2p web server and host your own web applications.
 - [https://github.com/kaangiray26/pages-template](https://github.com/kaangiray26/pages-template)
+
+## Examples
+* [pages-image](https://github.com/kaangiray26/pages-image) - Upload an image to host it on the web
