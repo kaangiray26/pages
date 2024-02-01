@@ -6,3 +6,7 @@ This is a P2P web server, which allows you to serve web applications from your b
 
 Please follow the project page for more information:
 [https://kaangiray26.github.io/pages](https://kaangiray26.github.io/pages)
+
+## Want to create your own?
+Check out this template repository and fork it to create your own p2p web server and host your own web applications.
+- [https://github.com/kaangiray26/pages-template](https://github.com/kaangiray26/pages-template)
