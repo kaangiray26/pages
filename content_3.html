@@ -1,0 +1,41 @@
+<div id="container">
+    <h1>Welcome traveler!</h1>
+    <p><span id="counter">{{counter}}</span> people say hello to you!</p>
+    <p>Click the button to greet them back!</p>
+    <div>
+        <button id="greet">Greet</button>
+    </div>
+</div>
+<style>
+    button {
+        cursor: pointer;
+    }
+
+    #container {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    #counter {
+        color: white;
+        background-color: dodgerblue;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+    }
+</style>
+<script>
+    document.querySelector('#greet').onclick = () => {
+        window.connection.send('greet');
+    }
+
+    // Remove the listener for the data event
+    window.connection.off('data');
+
+    // Add the new listener for the data event
+    window.connection.on('data', (data) => {
+        if (data.type == 'update') {
+            document.querySelector('#counter').innerHTML = data.value;
+        }
+    })
+</script>
