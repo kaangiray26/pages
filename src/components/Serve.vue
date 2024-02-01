@@ -351,6 +351,9 @@ async function start_serving() {
                 content: data.value.content
             });
         })
+        connection.on('error', (err) => {
+            console.log(err);
+        })
     })
     peer.value.on('error', (error) => {
         console.log(error);

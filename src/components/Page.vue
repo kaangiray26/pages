@@ -42,17 +42,16 @@ async function display(data) {
 }
 
 async function get(page) {
-    console.log("Getting page:", page);
     // Create peer
     window.peer = new Peer();
 
     // Set handlers
     window.peer.on('open', () => {
-        window.connection = window.peer.connect(page.address, {
+        window.connection = window.peer.connect(page.value.address, {
             reliable: true,
             metadata: {
-                route: page.route,
-                query: page.query
+                route: page.value.route,
+                query: page.value.query
             }
         })
         window.connection.on('data', (data) => {
