@@ -47,18 +47,16 @@ async function get(page) {
 
     // Set handlers
     window.peer.on('open', () => {
-        const connection = window.peer.connect(page.address, {
+        window.connection = window.peer.connect(page.address, {
             reliable: true,
             metadata: {
                 route: page.route,
                 query: page.query
             }
         })
-        connection.on('data', (data) => {
+        window.connection.on('data', (data) => {
+            console.log("Data received:", data);
             display(data);
-        })
-        connection.on('error', (err) => {
-            console.log('error', err);
         })
     })
 
