@@ -12,8 +12,8 @@
             </a>
             <pre class="code">server: {{ serving ? 'active' : 'not active' }}</pre>
             <p>
-                Enter an address and some content to make it instantly available on the web. Then, click the button to start
-                serving.
+                Enter an address with some content and click on the button to instantly make it available on the web using
+                peer-to-peer connections.
             </p>
             <form>
                 <div class="row mb-3">
