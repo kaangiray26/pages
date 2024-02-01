@@ -42,8 +42,23 @@ async function display(data) {
 }
 
 async function get(page) {
+    // Destroy peer on page close
+    window.onbeforeunload = () => {
+        if (window.peer) window.peer.destroy();
+    }
+
     // Create peer
-    window.peer = new Peer();
+    window.peer = new Peer({
+        config: {
+            iceServers: [
+                {
+                    urls: "turn:standard.relay.metered.ca:80",
+                    username: "f160ca84b24245367d899710",
+                    credential: "cc3qttBmJsFjPM/i",
+                },
+            ]
+        }
+    })
 
     // Set handlers
     window.peer.on('open', () => {
@@ -55,14 +70,15 @@ async function get(page) {
             }
         })
         window.connection.on('data', (data) => {
-            console.log("Data received:", data);
+            console.log("Received:", data);
             display(data);
         })
         window.connection.on('error', (err) => {
-            console.log(err);
+            console.log("Connection error:", err);
         })
     })
 
+    // Check for unavailable peer
     window.peer.on('error', (err) => {
         console.log(err);
         if (err.type == 'peer-unavailable') {

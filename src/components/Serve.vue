@@ -337,7 +337,17 @@ async function start_serving() {
     if (!data.value.address || !data.value.content) return;
 
     // Create peer
-    peer.value = new Peer([data.value.address]);
+    peer.value = new Peer([data.value.address], {
+        config: {
+            iceServers: [
+                {
+                    urls: "turn:standard.relay.metered.ca:80",
+                    username: "f160ca84b24245367d899710",
+                    credential: "cc3qttBmJsFjPM/i",
+                },
+            ]
+        }
+    });
 
     // Event handlers
     peer.value.on('open', () => {
@@ -345,7 +355,7 @@ async function start_serving() {
     })
 
     peer.value.on('connection', (connection) => {
-        console.log("Incoming connection:", connection);
+        console.log("New connection:", connection);
         connection.on('open', () => {
             connection.send({
                 content: data.value.content
@@ -374,7 +384,17 @@ async function serve_example_1() {
     if (peer.value) peer.value.destroy();
 
     // Create peer
-    peer.value = new Peer();
+    peer.value = new Peer({
+        config: {
+            iceServers: [
+                {
+                    urls: "turn:standard.relay.metered.ca:80",
+                    username: "f160ca84b24245367d899710",
+                    credential: "cc3qttBmJsFjPM/i",
+                },
+            ]
+        }
+    });
 
     // Event handlers
     peer.value.on('open', () => {
@@ -383,6 +403,7 @@ async function serve_example_1() {
     })
 
     peer.value.on('connection', (connection) => {
+        console.log("New connection:", connection);
         connection.on('open', () => {
             const metadata = connection.metadata;
 
@@ -413,7 +434,17 @@ async function serve_example_2() {
     if (peer.value) peer.value.destroy();
 
     // Create peer
-    peer.value = new Peer();
+    peer.value = new Peer({
+        config: {
+            iceServers: [
+                {
+                    urls: "turn:standard.relay.metered.ca:80",
+                    username: "f160ca84b24245367d899710",
+                    credential: "cc3qttBmJsFjPM/i",
+                },
+            ]
+        }
+    });
 
     // Create a counter
     counter.value = 0;
@@ -425,6 +456,7 @@ async function serve_example_2() {
     })
 
     peer.value.on('connection', (connection) => {
+        console.log("New connection:", connection);
         connection.on('open', () => {
             const metadata = connection.metadata;
 
