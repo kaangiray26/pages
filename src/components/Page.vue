@@ -47,11 +47,11 @@ async function get(page) {
 
     // Set handlers
     window.peer.on('open', () => {
-        window.connection = window.peer.connect(page.value.address, {
+        window.connection = window.peer.connect(page.address, {
             reliable: true,
             metadata: {
-                route: page.value.route,
-                query: page.value.query
+                route: page.route,
+                query: page.query
             }
         })
         window.connection.on('data', (data) => {
